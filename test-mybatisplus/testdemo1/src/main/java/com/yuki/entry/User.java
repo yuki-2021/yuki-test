@@ -1,13 +1,8 @@
 package com.yuki.entry;
 
-import com.baomidou.mybatisplus.annotation.SqlCondition;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -16,10 +11,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("user")
-public class User {
+@EqualsAndHashCode(callSuper = false)
+public class User extends Model<User> {
 
    //数据库主键
-   @TableId
+   @TableId(type = IdType.ID_WORKER)
    private Long id;
    @TableField(value = "name",condition = SqlCondition.NOT_EQUAL)
    private String name;

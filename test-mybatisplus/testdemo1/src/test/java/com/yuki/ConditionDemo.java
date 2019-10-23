@@ -1,6 +1,8 @@
 package com.yuki;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.yuki.dao.UserMapper;
 import com.yuki.entry.User;
@@ -104,4 +106,28 @@ public class ConditionDemo {
                 .in("age",Arrays.asList(40)).last("limit 1");
         userMapper.selectList(query).forEach(System.out::println);
     }
+
+    //实体构造器 会重复
+    //SQLCondition
+    public void test12(){
+        String name = "鲤鱼";
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        if(StringUtils.isNotEmpty(name)){
+            wrapper.like("name",name);
+        }
+
+    }
+
+    @Test
+    public void test13(){
+        QueryWrapper<User> manager_id = Wrappers.<User>query().select("avg(age) avg_age").groupBy("manager_id").having("sum(age) <{0}", 500);
+    }
+
+    @Test
+    public void test14(){
+//        LambdaQueryWrapper<User> lambda = new QueryWrapper<User>().lambda();
+//        LambdaQueryWrapper<User> userLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<User> 雨 = Wrappers.<User>lambdaQuery().like(User::getName, "雨");
+    }
+
 }
