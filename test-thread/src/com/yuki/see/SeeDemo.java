@@ -54,9 +54,21 @@ public class SeeDemo {
         iteratorThread.start();
     }
     public static void main(String[] args) {
-        final List<String> list = Collections
-                .synchronizedList(new ArrayList<String>());
-        startIteratorThread(list);
-        startModifyThread(list);
+//        final List<String> list = Collections
+//                .synchronizedList(new ArrayList<String>());
+//        startIteratorThread(list);
+//        startModifyThread(list);
+
+        String a = "aaa";
+        String b = new String(a);
+
+        byte[] bytes = a.getBytes();
+        for (int i = 0; i < bytes.length; i++) {
+            System.out.println(bytes[i]);
+        }
+        byte[] bytesa = a.getBytes();
+        for (int i = 0; i < bytes.length; i++) {
+            System.out.println(bytesa[i]);
+        }
     }
 }
