@@ -1,0 +1,32 @@
+package com.yuki.test16;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+
+//volatile仅仅保证了内存可见性
+//AtomicInteger保证了并发
+public class AtomicIntegerDemo {
+
+    private static AtomicInteger counter = new AtomicInteger(0);
+
+    static class Visitor extends Thread {
+        @Override
+        public void run() {
+            for(int i = 0; i < 1000; i++) {
+                counter.getAndAdd(1);
+            }
+        }
+    }
+    public static void main(String[] args) throws InterruptedException {
+        int num = 1000;
+        Thread[] threads = new Thread[num];
+        for(int i = 0; i < num; i++) {
+            threads[i] = new Visitor();
+            threads[i].start();
+        }
+        for(int i = 0; i < num; i++) {
+            threads[i].join();
+        }
+        System.out.println(counter.get());
+    }
+}
