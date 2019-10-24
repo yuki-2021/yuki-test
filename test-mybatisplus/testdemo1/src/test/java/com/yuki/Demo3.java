@@ -19,6 +19,11 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 
+/**
+ * 查询构造器
+ *
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
 public class Demo3 {

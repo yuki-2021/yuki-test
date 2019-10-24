@@ -9,38 +9,46 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * 基础方法测试
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
-public class TestDemo {
+public class BaseTest {
 
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 查询测试
+     *
+     */
     @Test
-    public void test1(){
-        User user = userMapper.selectById(1087982257332887553L);
-        System.out.println(user);
-    }
-
-    @Test
-    public void test2(){
-        List<User> users = userMapper.selectBatchIds(Arrays.asList(1087982257332887553L, 1088248166370832385L));
+    public void select(){
+        List<User> users = userMapper.selectList(null);
         users.forEach(System.out::println);
     }
 
-    //managerID不可用 存储的是数据库中的列
+
+    //主键ID: 基于雪花算法
+    //字段映射规则：驼峰 下划线
     @Test
-    public void test3(){
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("name","李静");
-        map.put("age",25);
-        userMapper.selectByMap(map).forEach(System.out::println);
+    public void insert(){
+        User user = new User();
+        user.setName("李青");
+//        user.setAge(11);
+        user.setManagerId(1087982257332887553L);
+        user.setCreateTime(LocalDateTime.now());
+
+        int row = userMapper.insert(user);
+        System.out.println("影响记录数 "  + row);
     }
+
+
 
 }

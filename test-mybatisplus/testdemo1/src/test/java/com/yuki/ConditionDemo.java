@@ -27,6 +27,10 @@ public class ConditionDemo {
     private UserMapper userMapper;
 
 
+    /**
+     *
+     * name = "李" and age = 40
+     */
     @Test
     public void test1() {
         //列名
@@ -37,18 +41,30 @@ public class ConditionDemo {
         users.forEach(System.out::println);
     }
 
+    /**
+     *
+     * name like "%李%" and age between 20 and 40 and email is not null
+     */
     @Test
     public void test2() {
         QueryWrapper<User> query = Wrappers.<User>query().like("name", "李").between("age", "20", "40").isNotNull("email");
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     * name like "李" or age >25 order by age desc,id
+     */
     @Test
     public void test3(){
         QueryWrapper<User> query = Wrappers.<User>query().like("name", "李").or().ge("age", 25).orderByDesc("age").orderByAsc("id");
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     * 自定义sql
+     */
     @Test
     public void test4(){
         //ate_format(create_time,'%Y-%m-%d') = 2019-10-05 会有sql注入风险 or true or true
@@ -57,6 +73,10 @@ public class ConditionDemo {
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     * like "李" and (age <40 or email is not null)
+     */
     @Test
     public void test5(){
         QueryWrapper<User> query = Wrappers.<User>query().likeRight("name", "李")
@@ -65,6 +85,10 @@ public class ConditionDemo {
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     *ike "李" or (age <40 or email is not null)
+     */
     @Test
     public void test6(){
         QueryWrapper<User> query = Wrappers.<User>query().likeRight("name", "李")
@@ -72,6 +96,11 @@ public class ConditionDemo {
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     *
+     * (( (age < ? OR email IS NOT NULL) ) AND name LIKE ?)
+     */
     @Test
     public void test7(){
         QueryWrapper<User> query = Wrappers.<User>query()
@@ -80,24 +109,40 @@ public class ConditionDemo {
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     * in
+     */
     @Test
     public void test8(){
         QueryWrapper<User> query = Wrappers.<User>query().in("age",Arrays.asList(40));
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     * last linit 1
+     */
     @Test
     public void test9(){
         QueryWrapper<User> query = Wrappers.<User>query().in("age",Arrays.asList(40)).last("limit 1");
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     * 查询指定字段
+     */
     @Test
     public void test10(){
         QueryWrapper<User> query = Wrappers.<User>query().select("id","name").in("age",Arrays.asList(40)).last("limit 1");
         userMapper.selectList(query).forEach(System.out::println);
     }
 
+    /**
+     *
+     * 查询非全部字段
+     */
     @Test
     public void test11(){
         //pricate
@@ -118,11 +163,20 @@ public class ConditionDemo {
 
     }
 
+    /**
+     *
+     * group by(manager_id) having sum(age)<500
+     */
     @Test
     public void test13(){
         QueryWrapper<User> manager_id = Wrappers.<User>query().select("avg(age) avg_age").groupBy("manager_id").having("sum(age) <{0}", 500);
     }
 
+    /**
+     *
+     *
+     * 支持lambda表达式
+     */
     @Test
     public void test14(){
 //        LambdaQueryWrapper<User> lambda = new QueryWrapper<User>().lambda();

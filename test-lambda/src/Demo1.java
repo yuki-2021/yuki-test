@@ -44,6 +44,11 @@ public class Demo1 {
 
     }
 
+
+    public static <T, R> List<R> map(List<T> list, Function<T, R> mapper) {
+        return list.stream().map(mapper).collect(Collectors.<R>toList());
+    }
+
     public static void main(String[] args) {
 
         //lambda不能修改局部变量
@@ -62,5 +67,12 @@ public class Demo1 {
                 new Student("zhangsan", 89d), new Student("lisi", 89d),
                 new Student("wangwu", 98d)});
         students = filter(students, t -> t.getScore() > 90);
+
+        //遍历
+        List<String> names = map(students, t -> t.getName());
+
+        //
+        students = map(students, t -> new Student(
+                t.getName().toUpperCase(), t.getScore()));
     }
 }

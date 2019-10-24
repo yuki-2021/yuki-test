@@ -35,7 +35,7 @@ public class ServiceTest {
         //save or update
         User user = new User();
         user.setName("李玉");
-        user.setAge(11);
+//        user.setAge(11);
         user.setManagerId(1186609160016445441L);
 
         boolean b = userService.saveBatch(Arrays.asList(user));
