@@ -1,4 +1,4 @@
-package com.yuki;
+package com.yuki.test21;
 
 import com.sun.org.apache.xpath.internal.operations.String;
 
@@ -9,7 +9,8 @@ import static java.lang.Class.forName;
 public class ClassDemo {
 
     public static void main(String[] args) {
-
+        //
+        Class<? extends Date> aClass2 = new Date().getClass();
         //类对应的Class
         Class<Date> dateClass = Date.class;
         //接口对应的Class
@@ -26,6 +27,5 @@ public class ClassDemo {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 }
