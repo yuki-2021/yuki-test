@@ -21,6 +21,10 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * 分页测试
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
 public class PageTest {

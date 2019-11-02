@@ -1,0 +1,17 @@
+### YukiException
+GET http://localhost:8080/test3
+Accept: application/json
+Cache-Control: no-cache
+
+### RuntimeException
+GET http://localhost:8080/test3?num = 0
+Accept: application/json
+Cache-Control: no-cache
+
+### Success
+GET http://localhost:8080/test3?num = 2
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
