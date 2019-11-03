@@ -53,7 +53,7 @@ public class customerDemo {
                 while(true) {
                     String task = String.valueOf(num);
                     queue.put(task);
-                    System.out.println("produce task " + task);
+                    System.out.println("produce com.yuki.time.task.task " + task);
                     num++;
                     Thread.sleep((int) (Math.random() * 100));
                 }
@@ -72,7 +72,7 @@ public class customerDemo {
             try {
                 while(true) {
                     String task = queue.take();
-                    System.out.println("handle task " + task);
+                    System.out.println("handle com.yuki.time.task.task " + task);
                     Thread.sleep((int)(Math.random()*100));
                 }
             } catch(InterruptedException e) {

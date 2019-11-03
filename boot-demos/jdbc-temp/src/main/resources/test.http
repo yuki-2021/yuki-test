@@ -1,0 +1,10 @@
+GET http://localhost:8080/users/1088248166370832385
+Accept: application/json
+Cache-Control: no-cache
+###
+
+GET http://localhost:8080/users
+Accept: application/json
+Cache-Control: no-cache
+
+###

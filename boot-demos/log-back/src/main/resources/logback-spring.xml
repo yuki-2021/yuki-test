@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--读取Spring的配置-->
+    <!--<springProperty scope="context" name="logName" source="spring.application.name" defaultValue="myapp.log"/>-->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="sample.logback" level="WARN"/>
+    <springProfile name="dev">
+        <root level="ERROR">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root level="ERROR">
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+</configuration>

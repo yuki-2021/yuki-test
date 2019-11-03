@@ -29,7 +29,7 @@ class Worker extends Thread {
     @Override
     public void run() {
         try {
-            //simulate working on task
+            //simulate working on com.yuki.time.task.task
             Thread.sleep((int) (Math.random() * 1000));
             this.latch.countDown();
         } catch (InterruptedException e) {

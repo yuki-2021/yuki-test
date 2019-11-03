@@ -60,7 +60,7 @@ public class Demo1 {
 //        FilenameFilter fileNameFilter = (dir, name) -> name.endsWith(".txt");
 //        Comparator<File> comparator = (f1, f2) ->
 //                f1.getName().compareTo(f2.getName());
-//        Runnable task = () -> System.out.println("hello world");
+//        Runnable com.yuki.time.task.task = () -> System.out.println("hello world");
 
         //测试
         List<Student> students = Arrays.asList(new Student[]{
