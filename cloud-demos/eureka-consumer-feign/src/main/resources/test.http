@@ -1,0 +1,5 @@
+GET http://localhost:2103/consumer
+Accept: application/json
+Cache-Control: no-cache
+
+###
