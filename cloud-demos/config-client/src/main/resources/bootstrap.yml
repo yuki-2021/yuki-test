@@ -1,12 +1,18 @@
 spring:
   application:
     name: config-client
-  cloud:
-    config:
-      uri: http://localhost:1201/
-      profile: default
-      label: master
-
 server:
   port: 2105
 
+
+#spring:
+#  application:
+#    name: config-client
+#  cloud:
+#    config:
+#      uri: http://localhost:1201/
+#      profile: default
+#      label: master
+eureka:
+  client:
+    service-url:
