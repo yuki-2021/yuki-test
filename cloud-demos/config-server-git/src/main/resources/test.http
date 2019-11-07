@@ -1,0 +1,4 @@
+GET http://localhost:1201/config-client/dev/master
+Accept: application/json
+Cache-Control: no-cache
+###

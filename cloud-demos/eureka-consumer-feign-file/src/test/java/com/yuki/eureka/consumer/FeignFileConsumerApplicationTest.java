@@ -22,7 +22,7 @@ import java.io.OutputStream;
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class YukiApplicationTest {
+public class FeignFileConsumerApplicationTest {
 
 
     @Autowired
@@ -37,12 +37,14 @@ public class YukiApplicationTest {
         DiskFileItem fileItem = (DiskFileItem) new DiskFileItemFactory().createItem("file",
                 MediaType.TEXT_PLAIN_VALUE, true, file.getName());
 
+        //复制文件
         try (InputStream input = new FileInputStream(file); OutputStream os = fileItem.getOutputStream()) {
             IOUtils.copy(input, os);
         } catch (Exception e) {
             throw new IllegalArgumentException("Invalid file: " + e, e);
         }
 
+        //创建multipartFile
         MultipartFile multi = new CommonsMultipartFile(fileItem);
 
         log.info(uploadService.handleFileUpload(multi));

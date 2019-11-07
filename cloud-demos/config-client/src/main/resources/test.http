@@ -1,0 +1,3 @@
+GET http://localhost:2105/actuator/info
+Cache-Control: no-cache
+Accept: application/json
