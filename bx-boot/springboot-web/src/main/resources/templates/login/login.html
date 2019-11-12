@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>欢迎登录</title>
+        <meta charset="utf-8"></meta>
+        
+        <style type="text/css">
+            .form-area{ margin:150px auto; width:480px; }
+            .form-area div { margin:10px;}
+            .form-area label{ display:inline-block; width:18% }
+            .form-area div .input-field { padding: 4px; width:70% }
+            
+            .form-area .buttonbar { text-align: right; padding-right: 50px;}
+            .form-area div button { padding: 3px 10px; }
+            
+            .flashErrors{
+                background-color: #ECE4E4;
+                padding: 5px;
+                margin-bottom: 10px;
+                color: #D84242;
+             }
+        </style>
+        
+    </head>
+    
+    <body>
+    
+       
+        <div class="form-area">
+           <div th:if="${flashErrors} != null" class="flashErrors">
+           <p th:each="flashError : ${flashErrors}" th:text="${flashError}"></p>
+           </div>
+           <form th:action="@{/login}" method="POST">
+                <div>
+                   <label>用户名：</label>
+                   <input type="text" name="username" class="input-field"></input>
+                </div>
+                
+                <div>
+                   <label>密码：</label>
+                   <input type="password" name="password" class="input-field"></input>
+                </div>
+               <div class="buttonbar">
+                 <button>登录</button>
+              </div>
+           </form>
+           
+         </div>
+           
+     </body>
+</html>

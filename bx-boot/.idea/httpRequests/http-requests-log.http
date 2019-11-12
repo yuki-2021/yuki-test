@@ -1,0 +1,280 @@
+POST http://localhost:8090/validate/json
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"email":"sdc"}
+
+<> 2019-11-12T104257.400.json
+
+###
+
+POST http://localhost:8090/validate/json
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{email:sdc }
+
+<> 2019-11-12T104230.400.json
+
+###
+
+POST http://localhost:8090/validate/json
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"email":"sdc"}
+
+<> 2019-11-12T104228.400.json
+
+###
+
+POST http://localhost:8090/validate/json
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"email":"sdc"}
+
+<> 2019-11-12T104205.400.json
+
+###
+
+POST http://localhost:8090/validate/json
+Accept: application/json
+Cache-Control: no-cache
+
+{"email":"sdc"}
+
+<> 2019-11-12T104130.415.json
+
+###
+
+POST http://localhost:8090/validate/json
+Accept: application/json
+Cache-Control: no-cache
+
+{email:sdc }
+
+<> 2019-11-12T103931.415.json
+
+###
+
+POST http://localhost:8090/validate/form?email=sdc
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T103425.400.json
+
+###
+
+POST http://localhost:8090/validate/form?email=sdc
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T103409.400.json
+
+###
+
+POST http://localhost:8090/validate/form?email=sdc
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T103407.400.json
+
+###
+
+POST http://localhost:8090/validate/form?email=sdc
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T103340.400.json
+
+###
+
+GET http://localhost:8090/validate/param?group=sdc&userid=1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T102633.400.json
+
+###
+
+GET http://localhost:8090/validate/param?group=sdc&userid=1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T102448.400.json
+
+###
+
+GET http://localhost:8090/validate/param?group=sdc&userid=1
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8090/validate/param?group=sdc&userid=1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T102207.200.json
+
+###
+
+GET http://localhost:8090/validate/param?group=sdc&userid=1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T102104.400.json
+
+###
+
+GET http://localhost:8090/validate/param?group=sdc&userid-1=
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T102050.400.json
+
+###
+
+GET http://localhost:8090/validate/path/Ac./10000
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T101751.404.json
+
+###
+
+GET http://localhost:8090/validate/path/Ac./10000
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T101503.404.json
+
+###
+
+GET http://localhost:8090/validate/path/Ac/10000
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T101456.200.json
+
+###
+
+GET http://localhost:8090/path/Ac/10000
+
+<> 2019-11-12T101409.404.json
+
+###
+
+GET http://localhost:8090/path/Ac/10000
+
+<> 2019-11-12T101401.404.json
+
+###
+
+GET http://localhost:8090/path/Ac/10000
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T101347.404.json
+
+###
+
+GET http://localhost:8090/path/Ac/10000
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T101301.404.json
+
+###
+
+GET http://localhost:8090/path/testIllegal.get/10000
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T101208.404.json
+
+###
+
+GET http://path/testIllegal.get/10000
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8090/path/Ac1_Ac2/1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T101124.404.json
+
+###
+
+GET http://localhost:8090/path/Ac1_/1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T101109.404.json
+
+###
+
+GET http://localhost:8090/path/AA/1/
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T100940.404.json
+
+###
+
+GET http://localhost:8090/path/AA/1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T100924.404.json
+
+###
+
+GET http://localhost:8090/path/ada+/1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T100907.404.json
+
+###
+
+GET http://localhost:8090/path/ada/1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T100747.404.json
+
+###
+
+GET http://localhost:8090/path/ada/1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T100732.404.json
+
+###
+
+GET http://localhost:8090/path/Aa1_/1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T100702.404.json
+
+###
+
+GET http://localhost:8090/path/sdc/1
+Accept: application/json
+Cache-Control: no-cache
+
+<> 2019-11-12T100618.404.json
+
+###
+

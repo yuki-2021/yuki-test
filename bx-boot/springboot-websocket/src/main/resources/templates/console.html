@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Web控制台</title>
+    <script th:src="@{/webjars/sockjs-client/sockjs.min.js}"></script>
+    <script th:src="@{/webjars/stomp-websocket/stomp.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/console.js}"></script>
+
+    <style type="text/css">
+        body { font-family: "Microsoft YaHei" ;}
+        .span-tv{padding-right:12px}
+        #console p {padding: 0px; margin: 0px;}
+    </style>
+
+</head>
+<body>
+
+<div style="background-color:#AAA; padding: 5px; border-bottom: 1px solid #333">
+    <input type="text" id="word" style="width:100px"></input>
+    <button onclick="sendMessage()">发送消息</button>
+    <button onclick="reconnect()">重新连接</button>
+    <button onclick="clearConsole()">清空内容</button>
+</div>
+
+<div id="console" style="padding:5px; font-size:10px"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<body>
+
+<h4 th:text="|Hi, ${customer}, these're your pets|"></h4>
+<hr></hr>
+
+<table>
+  <tr>
+    <th>name</th>
+    <th>type</th>
+    <th>age</th>
+  </tr>
+  <tr th:each="p : ${pets}">
+    <td th:text="${p.name}"></td>
+    <td th:text="${p.type}"></td>
+    <td th:text="${p.age}"></td>
+  </tr>
+</table>
+
+<img src="cid:soft"></img>
+</body>
+</html>

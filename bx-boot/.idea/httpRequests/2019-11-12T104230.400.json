@@ -1,0 +1,8 @@
+{
+  "timestamp": 1573526550961,
+  "status": 400,
+  "error": "Bad Request",
+  "exception": "org.springframework.http.converter.HttpMessageNotReadableException",
+  "message": "Could not read document: Unexpected character ('e' (code 101)): was expecting double-quote to start field name\n at [Source: java.io.PushbackInputStream@36f9e1c0; line: 1, column: 3]; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('e' (code 101)): was expecting double-quote to start field name\n at [Source: java.io.PushbackInputStream@36f9e1c0; line: 1, column: 3]",
+  "path": "/validate/json"
+}

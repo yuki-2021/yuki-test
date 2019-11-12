@@ -1,0 +1,66 @@
+{
+  "timestamp": 1573526525561,
+  "status": 400,
+  "error": "Bad Request",
+  "exception": "org.springframework.web.bind.MethodArgumentNotValidException",
+  "errors": [
+    {
+      "codes": [
+        "Min.jsonRequest.age",
+        "Min.age",
+        "Min.int",
+        "Min"
+      ],
+      "arguments": [
+        {
+          "codes": [
+            "jsonRequest.age",
+            "age"
+          ],
+          "default_message": "age",
+          "code": "age"
+        },
+        5
+      ],
+      "default_message": "最小不能小于5",
+      "object_name": "jsonRequest",
+      "field": "age",
+      "rejected_value": 0,
+      "binding_failure": false,
+      "code": "Min"
+    },
+    {
+      "codes": [
+        "Email.jsonRequest.email",
+        "Email.email",
+        "Email.java.lang.String",
+        "Email"
+      ],
+      "arguments": [
+        {
+          "codes": [
+            "jsonRequest.email",
+            "email"
+          ],
+          "default_message": "email",
+          "code": "email"
+        },
+        [],
+        {
+          "default_message": ".*",
+          "codes": [
+            ".*"
+          ]
+        }
+      ],
+      "default_message": "不是一个合法的电子邮件地址",
+      "object_name": "jsonRequest",
+      "field": "email",
+      "rejected_value": "sdc",
+      "binding_failure": false,
+      "code": "Email"
+    }
+  ],
+  "message": "Validation failed for object='jsonRequest'. Error count: 2",
+  "path": "/validate/json"
+}

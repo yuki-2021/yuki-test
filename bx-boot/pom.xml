@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.hscoder</groupId>
+	<artifactId>springboot-samples</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>springboot-samples</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring-boot.version>1.5.1.RELEASE</spring-boot.version>
+	</properties>
+
+	<modules>
+		<module>springboot-simplebuild</module>
+		<module>springboot-mail</module>
+		<module>springboot-redis</module>
+		<module>springboot-redis-session</module>
+		<module>springboot-mongo</module>
+        <module>springboot-jpa</module>
+        <module>springboot-h2</module>
+        <module>springboot-websocket</module>
+        <module>springboot-web</module>
+        <module>springboot-restful</module>
+        <module>springboot-shiro</module>
+        <module>springboot-interceptor</module>
+        <module>springboot-schedule</module>
+		<module>springboot-fileupload</module>
+	</modules>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/springboot-fileupload/springboot-fileupload.iml" filepath="$PROJECT_DIR$/springboot-fileupload/springboot-fileupload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-interceptor/springboot-interceptor.iml" filepath="$PROJECT_DIR$/springboot-interceptor/springboot-interceptor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-jpa/springboot-jpa.iml" filepath="$PROJECT_DIR$/springboot-jpa/springboot-jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-mail/springboot-mail.iml" filepath="$PROJECT_DIR$/springboot-mail/springboot-mail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-mongo/springboot-mongo.iml" filepath="$PROJECT_DIR$/springboot-mongo/springboot-mongo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-redis/springboot-redis.iml" filepath="$PROJECT_DIR$/springboot-redis/springboot-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-redis-session/springboot-redis-session.iml" filepath="$PROJECT_DIR$/springboot-redis-session/springboot-redis-session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-restful/springboot-restful.iml" filepath="$PROJECT_DIR$/springboot-restful/springboot-restful.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-samples.iml" filepath="$PROJECT_DIR$/springboot-samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-schedule/springboot-schedule.iml" filepath="$PROJECT_DIR$/springboot-schedule/springboot-schedule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-shiro/springboot-shiro.iml" filepath="$PROJECT_DIR$/springboot-shiro/springboot-shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-simplebuild/springboot-simplebuild.iml" filepath="$PROJECT_DIR$/springboot-simplebuild/springboot-simplebuild.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-web/springboot-web.iml" filepath="$PROJECT_DIR$/springboot-web/springboot-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-websocket/springboot-websocket.iml" filepath="$PROJECT_DIR$/springboot-websocket/springboot-websocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-h2/springboot.h2.iml" filepath="$PROJECT_DIR$/springboot-h2/springboot.h2.iml" />
+    </modules>
+  </component>
+</project>

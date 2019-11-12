@@ -1,0 +1,66 @@
+{
+  "timestamp": 1573526065190,
+  "status": 400,
+  "error": "Bad Request",
+  "exception": "org.springframework.validation.BindException",
+  "errors": [
+    {
+      "codes": [
+        "Email.formRequest.email",
+        "Email.email",
+        "Email.java.lang.String",
+        "Email"
+      ],
+      "arguments": [
+        {
+          "codes": [
+            "formRequest.email",
+            "email"
+          ],
+          "default_message": "email",
+          "code": "email"
+        },
+        [],
+        {
+          "default_message": ".*",
+          "codes": [
+            ".*"
+          ]
+        }
+      ],
+      "default_message": "不是一个合法的电子邮件地址",
+      "object_name": "formRequest",
+      "field": "email",
+      "rejected_value": "sdc",
+      "binding_failure": false,
+      "code": "Email"
+    },
+    {
+      "codes": [
+        "Min.formRequest.age",
+        "Min.age",
+        "Min.int",
+        "Min"
+      ],
+      "arguments": [
+        {
+          "codes": [
+            "formRequest.age",
+            "age"
+          ],
+          "default_message": "age",
+          "code": "age"
+        },
+        5
+      ],
+      "default_message": "最小不能小于5",
+      "object_name": "formRequest",
+      "field": "age",
+      "rejected_value": 0,
+      "binding_failure": false,
+      "code": "Min"
+    }
+  ],
+  "message": "Validation failed for object='formRequest'. Error count: 2",
+  "path": "/validate/form"
+}

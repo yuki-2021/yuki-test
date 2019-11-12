@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>欢迎回来</title>
+        <meta charset="utf-8"></meta>
+        
+        <style type="text/css">
+            .head{
+                border-bottom: 1px solid #666;
+            }
+            .main{
+                font-size: 18px;
+                margin: 20px auto;
+             }
+        </style>
+        
+    </head>
+    
+    <body>
+    
+        <div class="head" th:include="login/header::head"></div>
+        <div class="main">
+           欢迎回来，返回<a th:href="@{/login}" >登录界面</a>
+           
+         </div>
+           
+     </body>
+</html>
