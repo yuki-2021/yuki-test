@@ -47,6 +47,12 @@ public class FileController {
     // 存放根目录
     private static final File ROOT = new File("D:/temp");
 
+
+    @GetMapping
+    public String file(){
+        return "index";
+    }
+
     /**
      * 文件上传
      * 
@@ -78,9 +84,11 @@ public class FileController {
             return ResponseEntity.badRequest().body("the file is too large");
         }
 
+        // 保存图片
         String name = save(file);
 
-        URI getUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/file/get").queryParam("name", name)
+        URI getUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/file/get")
+                .queryParam("name", name)
                 .build(true).toUri();
 
         return ResponseEntity.ok(getUri.toString());
@@ -100,37 +108,38 @@ public class FileController {
 
         logger.info("file receive count {}", files.length);
 
-        List<String> uris = new ArrayList<String>();
+        ArrayList<String> uris = new ArrayList<>();
         for (MultipartFile file : files) {
-            // 检查文件内容是否为空
-            if (file.isEmpty()) {
+            // 文件判空
+            if(file.isEmpty()){
+                logger.info("the file {} is empty", file.getOriginalFilename());
                 continue;
             }
 
-            // 原始文件名
             String fileName = file.getOriginalFilename();
 
-            // 检查后缀名
-            if (!checkImageSuffix(fileName)) {
+            // 后缀检查
+            if(!checkImageSuffix(fileName)){
                 logger.warn("the file {} is not image", fileName);
                 continue;
             }
 
-            // 检查大小
-            if (!checkSize(file.getSize())) {
+            //大小检查
+            if(!checkSize(file.getSize())){
                 logger.warn("the file {} is too large", fileName);
                 continue;
             }
 
             String name = save(file);
 
-            URI getUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/file/get").queryParam("name", name)
+            //返回URI
+            URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/file/get")
+                    .queryParam("name", name)
                     .build(true).toUri();
-            uris.add(getUri.toString());
+            uris.add(uri.toString());
         }
 
         return ResponseEntity.ok(uris);
-
     }
 
     /**
@@ -140,12 +149,17 @@ public class FileController {
      * @return
      */
     private boolean checkImageSuffix(String fileName) {
+        //转换小写
         String testFileName = fileName.toLowerCase();
+
+        //判断是否包含
         for (String suffix : IMAGE_SUFFIXES) {
             if (testFileName.endsWith(suffix)) {
                 return true;
             }
         }
+
+        //不存在
         return false;
     }
 
@@ -156,9 +170,11 @@ public class FileController {
      * @return
      */
     private boolean checkSize(long size) {
+        //大于最大
         if (size > IMAGE_MAX_SIZE) {
             return false;
         }
+        //满足
         return true;
     }
 
@@ -170,15 +186,17 @@ public class FileController {
      */
     private String save(MultipartFile file) {
 
-        if (!ROOT.isDirectory()) {
+        // 根目录判空
+        if(!ROOT.isDirectory()){
             ROOT.mkdirs();
         }
+
+        // 保存文件
         try {
             String path = UUID.randomUUID().toString() + getSuffix(file.getOriginalFilename());
             File storeFile = new File(ROOT, path);
             file.transferTo(storeFile);
             return path;
-
         } catch (IllegalStateException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -187,8 +205,10 @@ public class FileController {
     }
 
     private String getSuffix(String originalFilename) {
+        //获取后缀
         int idx = originalFilename.lastIndexOf('.');
-        if (idx >= 0) {
+
+        if(idx >= 0){
             return originalFilename.substring(idx);
         }
         return "";
@@ -204,19 +224,23 @@ public class FileController {
     @GetMapping(path = "/get")
     public ResponseEntity<Object> get(@RequestParam("name") String name) throws IOException {
 
+        //文件名称判空
         if (StringUtils.isEmpty(name)) {
             return ResponseEntity.badRequest().body("name is empty");
         }
 
+        //校验文件名称
         if (!checkName(name)) {
             return ResponseEntity.badRequest().body("name is illegal");
         }
 
+        //文件不存在
         File file = new File(ROOT, name);
-        if (!file.isFile()) {
+        if(!file.isFile()){
             return ResponseEntity.notFound().build();
         }
 
+        //文件不可读
         if (!file.canRead()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("no allow to access");
         }
@@ -224,7 +248,10 @@ public class FileController {
 
         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
         //.contentType(MediaType.IMAGE_JPEG).
-        return ResponseEntity.ok().contentLength(file.length()).body(resource);
+        return ResponseEntity.ok().contentLength(file.length())
+                .header("Content-Disposition","attachment;fileName="+name)
+//                .contentType(MediaType.IMAGE_JPEG)
+                .body(resource);
     }
 
     /**
