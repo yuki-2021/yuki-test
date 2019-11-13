@@ -11,6 +11,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+/**
+ * 在Script为空的情况下
+ * h2 url = jdbc:h2:mem:test
+ * h2 schema = classpath:script/test-data.sql
+ * jpa 是 update
+ * 会直接创建查询为空
+ * 制定了script的情况下，script不能为空
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootJpa.class)
 public class CityViewRepositoryTest {
