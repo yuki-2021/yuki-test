@@ -2,7 +2,7 @@ package org.hscoder.springboot.h2;
 
 import org.hscoder.springboot.h2.domain.LogRecord;
 import org.hscoder.springboot.h2.repository.LogRecordRepository;
-import org.hscoder.springboot.simplebuild.util.JsonUtil;
+import org.hscoder.springboot.h2.utils.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

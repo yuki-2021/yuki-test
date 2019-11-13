@@ -7,8 +7,9 @@ import java.util.Date;
 @Table(name="log_record")
     public class LogRecord {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String level;
