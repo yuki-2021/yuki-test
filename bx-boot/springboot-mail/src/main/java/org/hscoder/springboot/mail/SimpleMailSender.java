@@ -46,8 +46,8 @@ public class SimpleMailSender implements CommandLineRunner {
         msg.setFrom(from);
         msg.setTo(to);
 
-        msg.setSubject("first email from yourself");
-        msg.setText("hello world!");
+        msg.setSubject("email from yuki");
+        msg.setText("收到请回复");
 
         this.mailSender.send(msg);
         logger.info("send text done");
@@ -65,16 +65,16 @@ public class SimpleMailSender implements CommandLineRunner {
         // 使用Mime消息体
         MimeMessage message = mailSender.createMimeMessage();
 
-        // multipart参数为true，表示需要发送附件
+        //multiPart参数为true ，表示需要发送附件
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setFrom(from);
         helper.setTo(to);
 
-        helper.setSubject("first file from yourself");
-        helper.setText("check the file");
+        helper.setSubject("email from yuki");
+        helper.setText("请下载附件");
 
         // 指定系统文件
-        File file = new File("D:\\temp\\attachment.xlsx");
+        File file = new File("D:\\temp\\9d35a29b-bcd7-4f7b-85d7-00319362eb83.jpg");
         FileSystemResource resource = new FileSystemResource(file);
         helper.addAttachment(file.getName(), resource);
 
@@ -112,7 +112,7 @@ public class SimpleMailSender implements CommandLineRunner {
         pets.add(new Pet("Badboy", "Dog", 3));
 
         Context context = new Context();
-        context.setVariable("customer", "LiLei");
+        context.setVariable("customer", "yuki");
         context.setVariable("pets", pets);
 
         String text = templateEngine.process("mail/template", context);
@@ -120,14 +120,17 @@ public class SimpleMailSender implements CommandLineRunner {
 
 
         //添加图片展示
-        helper.addInline("soft", new FileSystemResource("D:/temp/soft.png"));
+        helper.addInline("soft", new FileSystemResource("D:/temp/9d35a29b-bcd7-4f7b-85d7-00319362eb83.jpg"));
         
         mailSender.send(message);
+        System.out.println("send mail success");
     }
 
     @Override
     public void run(String... args) throws Exception {
-        // sendText();
+
+
+         // sendText();
 
         // sendAttachment();
 
