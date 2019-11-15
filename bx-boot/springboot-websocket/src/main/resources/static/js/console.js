@@ -10,6 +10,7 @@ function connect() {
     var socket = new SockJS('/backend');
     window.stompClient = Stomp.over(socket);
     window.stompClient.connect({}, function (frame) {
+        console.log('Connected: ' + frame)
         log('Connected: ' + frame);
 
         //订阅服务端输出的 Topic
