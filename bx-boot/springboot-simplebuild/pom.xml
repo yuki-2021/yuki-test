@@ -4,19 +4,24 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
+	<!--指定自定义父类Pom-->
 	<parent>
 		<groupId>org.hscoder</groupId>
 		<artifactId>springboot-samples</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+
 	<groupId>org.hscoder</groupId>
 	<artifactId>springboot-simplebuild</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot-simplebuild</name>
 	<url>http://maven.apache.org</url>
+
+	<!--定义属性-->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<dependencies>
 		<!-- springboot application dependencies -->
 		<dependency>
@@ -93,18 +98,37 @@
 			<version>2.8.3</version>
 		</dependency>
 
+		<!-- common-io -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
 
+		<!-- commons-lang -->
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
 	</dependencies>
+
+	<!--热部署-->
+	<!--<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					&lt;!&ndash;开启devtools生效&ndash;&gt;
+					<fork>true</fork>
+					&lt;!&ndash;修改resouces生效&ndash;&gt;
+					<addResources>true</addResources>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>-->
+
 
 	<build>
 		<plugins>

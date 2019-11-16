@@ -10,6 +10,13 @@ public class DemoController {
     @RequestMapping("/")
     @ResponseBody
     String home() {
-        return "Hello World! ";
+        return "你好世界 !!!";
+    }
+
+
+    @RequestMapping("/hello")
+    @ResponseBody
+    String home1() {
+        return "home 1";
     }
 }

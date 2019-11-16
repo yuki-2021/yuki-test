@@ -2,10 +2,12 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
     <id>bundle</id>
+    <!--格式-->
     <formats>
         <format>tar.gz</format>
     </formats>
-    <includeBaseDirectory>false</includeBaseDirectory> <!-- disable the creation of root's distribution dir in the archive -->
+    <!-- disable the creation of root's distribution dir in the archive -->
+    <includeBaseDirectory>false</includeBaseDirectory>
 
     <fileSets>
         <!-- config files -->
@@ -16,7 +18,7 @@
                 <include>application*.properties</include>
                 <include>log4j2.xml</include>
             </includes>
-            <fileMode>0644</fileMode>
+            <!--权限-->
             <outputDirectory>/</outputDirectory>
         </fileSet>
         <!-- scripts -->
@@ -25,7 +27,6 @@
             <includes>
                 <include>*.sh</include>
             </includes>
-            <fileMode>0755</fileMode>
             <outputDirectory>/</outputDirectory>
         </fileSet>
         <!-- executable jar -->
@@ -35,7 +36,6 @@
             <includes>
                 <include>${project.artifactId}-${project.version}.jar</include>
             </includes>
-            <fileMode>0755</fileMode>
         </fileSet>
     </fileSets>
 
