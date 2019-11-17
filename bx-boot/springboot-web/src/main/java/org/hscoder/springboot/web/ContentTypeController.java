@@ -2,6 +2,7 @@ package org.hscoder.springboot.web;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import groovy.util.logging.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,7 @@ import java.util.UUID;
  */
 @Controller
 @RequestMapping(value = "/content")
+@Slf4j
 public class ContentTypeController {
 
     private static final Logger logger = LoggerFactory.getLogger(ContentTypeController.class);
@@ -47,10 +49,21 @@ public class ContentTypeController {
      */
     @ResponseBody
     @PostMapping(value = "/json", consumes = {
-            MediaType.APPLICATION_JSON_UTF8_VALUE }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+            MediaType.APPLICATION_JSON_UTF8_VALUE },
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Map<String, Object> jsonIO(@RequestBody Map<String, Object> jsonData) {
 
         Map<String, Object> resultData = new HashMap<>(jsonData);
+        resultData.put("resultCode", UUID.randomUUID().toString());
+        return resultData;
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/jsonStr")
+    public Map<String, Object> jsonStr(@RequestBody String jsonData) {
+        logger.info(jsonData);
+        Map<String, Object> resultData = new HashMap<>();
+        resultData.put("info",jsonData);
         resultData.put("resultCode", UUID.randomUUID().toString());
         return resultData;
     }
@@ -62,7 +75,8 @@ public class ContentTypeController {
      * @return
      */
     @PostMapping(value = "/xml", consumes = {
-            MediaType.APPLICATION_XML_VALUE }, produces = MediaType.APPLICATION_XML_VALUE)
+            MediaType.APPLICATION_XML_VALUE },
+            produces = MediaType.APPLICATION_XML_VALUE)
     @ResponseBody
     public ParamData xmlIO(@RequestBody ParamData data) {
         data.setAge(data.getAge() + 1);
@@ -77,7 +91,8 @@ public class ContentTypeController {
      * @return
      */
     @PostMapping(value = "/form", consumes = {
-            MediaType.APPLICATION_FORM_URLENCODED_VALUE }, produces = MediaType.TEXT_PLAIN_VALUE)
+            MediaType.APPLICATION_FORM_URLENCODED_VALUE },
+            produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseBody
     public String form(@RequestParam("name") String name, @RequestParam("age") int age) {
         return String.format("Welcome %s, you are %d years old", name, age);
@@ -104,7 +119,8 @@ public class ContentTypeController {
      * @return
      */
     @PostMapping(value = "file", consumes = {
-            MediaType.MULTIPART_FORM_DATA_VALUE }, produces = MediaType.TEXT_PLAIN_VALUE)
+            MediaType.MULTIPART_FORM_DATA_VALUE },
+            produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseBody
     public String file(@RequestParam("name") String name, @RequestParam("file") MultipartFile file) {
 

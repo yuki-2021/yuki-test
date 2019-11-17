@@ -91,7 +91,7 @@ public class ValidateController {
      */
     @PostMapping("/json")
     @ResponseBody
-    public JsonRequest json(@Validated @RequestBody JsonRequest request) {
+    public JsonRequest json(@Validated  JsonRequest request) {
 
         return request;
     }
