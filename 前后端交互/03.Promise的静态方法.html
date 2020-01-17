@@ -1,0 +1,37 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  </body>
+  <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+
+
+      function queryData(url){
+        return new Promise(function(resolve,reject){
+            $.ajax({
+              type:'get',
+              url: url,
+              dataType: 'text',
+              success: function(data){
+                console.log(`step1 -- ${data}`);
+                resolve(data);
+              }
+            });
+        })
+      }
+
+    var p1 = queryData('http://localhost:3000/data');
+    var p2 = queryData('http://localhost:3000/data2');
+    var p3 = queryData('http://localhost:3000/data1');
+    Promise.all([p1, p2]).then(function(res){
+      console.log(res);
+    })
+
+
+
+  </script>
+</html>

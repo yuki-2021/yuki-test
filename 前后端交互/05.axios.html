@@ -1,0 +1,45 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  </body>
+  <!-- 1. 引入axios库 -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript">
+
+    // axios
+    axios.get("http://localhost:3000/adata")
+    .then(function(res){
+      console.log(res.data);
+    })
+
+    axios.get("http://localhost:3000/axios",{
+      params:{
+        id: 'yuki'
+      }
+    })
+    .then(function(res){
+      console.log(res.data);
+    })
+    //post方式传递参数
+    axios.post("http://localhost:3000/axios",{
+      uname: 'yuki',
+      pwd: 123456
+    }).then(function(res){
+      console.log(res.data);
+    })
+    //另一种方式传递参数
+    var params = new URLSearchParams();
+    params.append('uname','yuki');
+    params.append('pwd','123456');
+    axios.post("http://localhost:3000/axios",params)
+      .then(function(res){
+        console.log(res.data);
+      })
+
+
+  </script>
+</html>

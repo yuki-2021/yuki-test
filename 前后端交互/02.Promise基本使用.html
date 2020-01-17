@@ -1,0 +1,98 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  </body>
+  <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+      // 1. 发送ajax请求
+      // $.ajax({
+      //   type:'get',
+      //   url:'http://localhost:3000/data',
+      //   dataType: 'text',
+      //   success: function(data){
+      //     console.log(`step1 -- ${data}`);
+      //     // 2. 再次发送ajax请求
+      //     $.ajax({
+      //       type:'get',
+      //       url:'http://localhost:3000/data',
+      //       dataType: 'text',
+      //       success: function(data){
+      //         console.log(`step2 -- ${data}`);
+      //         // 3. 第三次发送ajax
+      //         $.ajax({
+      //           type:'get',
+      //           url:'http://localhost:3000/data',
+      //           dataType: 'text',
+      //           success: function(data){
+      //             console.log(`step3 -- ${data}`);
+      //           }
+      //         });
+      //       }
+      //     });
+      //   }
+      // });
+
+      //有了Promise之后的写法
+      // function queryData(url){
+      //   return $.ajax({
+      //     type:'get',
+      //     url: url,
+      //     dataType: 'text',
+      //     success: function(data){
+      //       console.log(`step1 -- ${data}`);
+      //     }
+      //   })
+      // }
+      //
+      // var p = new Promise(function(resolve,reject){
+      //   //1. 第一次发送
+      //   $.ajax({
+      //     type:'get',
+      //     url:'http://localhost:3000/data1',
+      //     dataType: 'text',
+      //     success: function(data){
+      //       console.log(`step1 -- ${data}`);
+      //       resolve();
+      //     }
+      //   })
+      // });
+      // p.then(function(){
+      //
+      //   return new Promise(function(resolve,reject){
+      //       console.log('奥里给');
+      //       resolve(queryData('http://localhost:3000/data1'));
+      //   });
+      // })
+      // .then(function(data){
+      //   console.log("奥里给3");
+      //   console.log(data);
+      //   console.log("奥里给3");
+      //   return queryData('http://localhost:3000/data1');
+      // }).finally(function(){
+      //   console.log("最后的奥里给");
+      // });
+
+
+      // new Promise(function(resolve,reject){
+      //   console.log("鸡你太美1");
+      //   throw "exception"
+      //   resolve("end")
+      // })
+      // .then(function(){
+      //     console.log("鸡你太美2");
+      //     return "end";
+      // }).catch(function(){
+      //   console.log("鸡你太美Exception");
+      // })
+      // .finally(function(){
+      //   console.log("究极鸡你太美");
+      // })
+
+
+
+  </script>
+</html>

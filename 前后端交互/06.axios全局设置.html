@@ -1,0 +1,40 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  </body>
+  <!-- 1. 引入axios库 -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript">
+
+    //全局配置基准URL
+    axios.defaults.baseURL = 'http://localhost:3000/';
+    //设置超时事件
+    axios.defaults.timeout = 2500;
+    //设置请求头信息
+    axios.defaults.headers['mytoken'] = 'yuki';
+
+
+    // 配置拦截器
+    axios.interceptors.request.use(function(config){
+      console.log(config);
+      config.headers.mytoken = 'otto';
+      return config;
+    }, function(config){
+      return config;
+    });
+
+    // axios
+    axios.get('adata')
+    .then(function(res){
+      console.log(res.data);
+    })
+
+
+
+
+  </script>
+</html>
