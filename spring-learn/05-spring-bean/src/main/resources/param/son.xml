@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+
+default-autowire="byType">
+
+    <bean id="car" class="com.yuki.demo5.param.Car">
+        <property name="brand" value="A6" />
+    </bean>
+
+    <bean id="boss" class="com.yuki.demo5.param.Boss">
+        <property name="car">
+            <ref parent="car"/>
+        </property>
+    </bean>
+
+    <bean id="boss2" class="com.yuki.demo5.param.Boss">
+        <property name="car">
+            <bean class="com.yuki.demo5.param.Car">
+                <property name="brand" value="奇瑞QQ" />
+             </bean>
+        </property>
+    </bean>
+
+    <bean id="boss3" class="com.yuki.demo5.param.Boss">
+        <property name="girlFirends">
+            <list>
+                <value>小泽玛莉亚</value>
+                <value>真野优莉亚</value>
+                <value>樱井彩</value>
+            </list>
+        </property>
+        <property name="wifes">
+            <list>
+                <value>Adriana Chechik</value>
+                <value>莱利·里德</value>
+                <value>Cameron Canada</value>
+            </list>
+        </property>
+        <property name="things">
+            <props>
+                <prop key="AM">Feed horse</prop>
+                <prop key="PM">horse riding</prop>
+            </props>
+        </property>
+        <property name="works">
+            <map>
+                <entry>
+                    <key><value>AM</value></key>
+                    <value>Learning posture</value>
+                </entry>
+                <entry>
+                    <key><value>AM</value></key>
+                    <value>practice posture</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="boss4" class="com.yuki.demo5.param.Boss"></bean>
+</beans>

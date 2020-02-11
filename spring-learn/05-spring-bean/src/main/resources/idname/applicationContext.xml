@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- id只能指定一次 -->
+    <bean id="foo" class="com.yuki.demo5.idname.Foo">
+        <property name="name" value="yuki" />
+    </bean>
+    <!--可以在name指定多个-->
+    <bean name="foo1,foo2" class="com.yuki.demo5.idname.Foo">
+        <property name="name" value="yuki" />
+    </bean>
+    <!-- name相同 会覆盖 -->
+    <bean id="foo" class="com.yuki.demo5.idname.Car">
+        <property name="name" value="yuki" />
+    </bean>
+</beans>

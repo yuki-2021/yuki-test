@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--属性注入-->
+    <bean id="car" class="com.yuki.demo5.inject.Car">
+        <property name="brand" value="A3" />
+        <property name="corp" value="AHorch" />
+        <property name="maxSpeed" value="15" />
+    </bean>
+
+    <!-- 构造方法注入 -->
+    <bean id="car2" class="com.yuki.demo5.inject.Car">
+        <constructor-arg index="0"><value>A4</value></constructor-arg>
+        <constructor-arg index="2" type="double"><value>20</value></constructor-arg>
+        <constructor-arg index="1"><value>AHorch</value></constructor-arg>
+    </bean>
+
+    <!-- 循环依赖问题 -->
+    <bean id="carLock" class="com.yuki.demo5.inject.CarLock">
+        <constructor-arg><value>A3</value></constructor-arg>
+        <constructor-arg><ref bean="bossLock"/></constructor-arg>
+    </bean>
+    <bean id="bossLock" class="com.yuki.demo5.inject.BossLock">
+        <constructor-arg><ref bean="carLock"/></constructor-arg>
+        <constructor-arg><value>yuki</value></constructor-arg>
+    </bean>
+</beans>

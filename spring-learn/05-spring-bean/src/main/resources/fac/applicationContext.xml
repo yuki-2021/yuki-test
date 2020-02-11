@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1. 定义工厂类-->
+    <bean id="carFactory" class="com.yuki.demo5.fac.CarFactory" />
+    <!-- 2. 定义目标Bean -->
+    <bean id="car" factory-bean="carFactory" factory-method="HongQi" />
+
+
+    <bean id="car2" class="com.yuki.demo5.fac.CarFactory" factory-method="byd"/>
+ </beans>
