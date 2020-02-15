@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.yuki.demo1.dao.UserDao">
+    <select id="findAll" resultType="com.yuki.demo1.domain.User">
+        select * from user
+    </select>
+
+
+    <insert id="saveUser" parameterType="com.yuki.demo1.domain.User">
+        <selectKey keyProperty="id" order="AFTER" keyColumn="id" resultType="int">
+            select last_insert_id()
+        </selectKey>
+        insert into user(username, birthday, sex, address) VALUE (#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <update id="updateUser" parameterType="com.yuki.demo1.domain.User">
+        update user set username = #{username} where id = #{id}
+    </update>
+
+    <delete id="removeUser" parameterType="java.lang.Integer">
+        delete from user where id = #{id}
+    </delete>
+
+    <select id="findById" parameterType="integer" resultType="com.yuki.demo1.domain.User">
+        select *from user where id = #{id}
+    </select>
+
+    <select id="findByUsername" parameterType="string" resultType="com.yuki.demo1.domain.User">
+#         select * from user where username like '%${value}%'
+        select * from user where username like #{username}
+    </select>
+    <select id="findQueryVo" parameterType="com.yuki.demo1.domain.QueryVo" resultType="com.yuki.demo1.domain.User">
+        <!-- select * from user where username like '%' #{user.username} '%' -->
+        <!-- select * from user where username like '%' #{user.username} '%' -->
+        <bind name="usernameplus" value="'%' + #{user.username} + '%'"/>
+        select * from user where username like #{usernameplus}
+    </select>
+
+    <select id="findAllDiff" resultMap="userMap">
+        select * from user
+    </select>
+
+    <resultMap id="userMap" type="UsErDiff">
+        <id property="userid" column="id"></id>
+        <result property="username" column="username" />
+        <result property="userbirthday" column="birthday" />
+        <result property="usersex" column="sex" />
+        <result property="useraddress" column="address" />
+    </resultMap>
+
+</mapper>
