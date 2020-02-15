@@ -3,7 +3,6 @@ package com.yuki.demo1.dao;
 import com.yuki.demo1.domain.QueryVo;
 import com.yuki.demo1.domain.User;
 import com.yuki.demo1.domain.UserDiff;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
