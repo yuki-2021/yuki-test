@@ -1,0 +1,19 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<html>
+<head>
+    <title>showDetail</title>
+</head>
+<body>
+    <h6>用户详细信息</h6>
+    <table>
+        <tr>
+            <td>id</td>
+            <td>${user.userId}</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>${user.userName}</td>
+        </tr>
+    </table>
+</body>
+</html>
