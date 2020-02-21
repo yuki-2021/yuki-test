@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="waiterTraget" class="com.yuki.demo7.advisor.Waiter" />
+    <bean id="sellerTarget" class="com.yuki.demo7.advisor.Seller" />
+    <!--创建Advice-->
+    <bean id="greetingBeforeAdvice" class="com.yuki.demo7.advisor.GreetingBeforeAdvice" />
+    <!--  创建切面-->
+    <bean id="greetingAdvisor" class="com.yuki.demo7.advisor.GreetingAdvisor"
+          p:advice-ref="greetingBeforeAdvice" />
+
+
+    <!--  手动织入 -->
+    <bean id="parent" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:interceptorNames="greetingAdvisor"
+          p:proxyTargetClass="true" />
+
+    <bean id="waiter" parent="parent" p:target-ref="waiterTraget" />
+    <bean id="seller" parent="parent" p:target-ref="sellerTarget" />
+
+
+    <!-- 静态正则匹配 -->
+    <bean id="regepxAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
+          p:pattern=".*greet.*"
+          p:advice-ref="greetingBeforeAdvice" />
+    <!-- 代理类 -->
+    <bean id="waiter1" p:interceptorNames="regepxAdvisor" parent="parent" p:target-ref="waiterTraget" />
+    <bean id="seller1" p:interceptorNames="regepxAdvisor" parent="parent" p:target-ref="sellerTarget" />
+
+
+    <!-- DefaultAdvisor -->
+    <bean id="greetingDynamicPointcut" class="com.yuki.demo7.advisor.GreetingDynamicPointcut" />
+    <bean id="defaultAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
+         p:pointcut-ref="greetingDynamicPointcut"
+          p:advice-ref="greetingBeforeAdvice" />
+    <!-- 代理类 -->
+    <bean id="waiter2" p:interceptorNames="defaultAdvisor" parent="parent" p:target-ref="waiterTraget" />
+    <bean id="seller2" p:interceptorNames="defaultAdvisor" parent="parent" p:target-ref="sellerTarget" />
+
+    <!-- ControFllowAdvisor-->
+    <bean id="greetControlFlow" class="org.springframework.aop.support.ControlFlowPointcut"
+          c:_0="com.yuki.demo7.advisor.WaiterDelegate"
+          c:_1="serve" />
+    <bean id="controlAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
+          p:pointcut-ref="greetControlFlow"
+          p:advice-ref="greetingBeforeAdvice" />
+    <bean id="waiter3" p:interceptorNames="controlAdvisor" parent="parent" p:target-ref="waiterTraget" />
+    <bean id="seller3" p:interceptorNames="controlAdvisor" parent="parent" p:target-ref="sellerTarget" />
+
+</beans>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="target" class="com.yuki.demo7.service.LocalWaiter" />
+<!--    <bean id="preServe" class="com.yuki.demo7.advice.PreServe" />-->
+<!--    <bean id="postGreet" class="com.yuki.demo7.advice.PostGreet" />-->
+<!--    <bean id="aroundGreet" class="com.yuki.demo7.advice.AroundGreet" />-->
+<!--    <bean id="exceptionGreet" class="com.yuki.demo7.advice.ExceptionGreet" />-->
+    <bean id="other" class="com.yuki.demo7.advice.GreetableAdvice" />
+
+
+
+
+    <bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:target-ref="target"
+          p:interceptorNames="other"
+          p:proxyTargetClass="true">
+        <property name="interfaces">
+            <list>
+                <value>com.yuki.demo7.advice.Greetable</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
